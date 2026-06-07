@@ -30,7 +30,7 @@ def train_prepruned_dt(X_train, y_train) -> DecisionTreeClassifier:
 
 def train_postpruned_dt(X_train, y_train, X_test, y_test) -> DecisionTreeClassifier:
     path = DecisionTreeClassifier(random_state=1).cost_complexity_pruning_path(X_train, y_train)
-    alphas = path.ccp_alphas[:-1]  # exclude trivial last alpha (single leaf)
+    alphas = abs(path.ccp_alphas[:-1])  # exclude trivial last alpha (single leaf)
 
     best_alpha, best_f1 = 0.0, 0.0
     for alpha in alphas:
