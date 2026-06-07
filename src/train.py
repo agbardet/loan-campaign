@@ -13,7 +13,7 @@ def train_default_dt(X_train, y_train) -> DecisionTreeClassifier:
 
 def train_prepruned_dt(X_train, y_train) -> DecisionTreeClassifier:
     param_grid = {
-        "max_depth": list(range(6, 16)),
+        "max_depth": list(range(6, 15)),
         "min_samples_leaf": [1, 2, 5, 7],
         "max_leaf_nodes": [2, 3, 5],
     }

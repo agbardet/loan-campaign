@@ -20,9 +20,8 @@ def classification_report_dict(model, X, y, label: str) -> dict:
 def plot_confusion_matrix(model, X_test, y_test, title: str, save_path: str) -> None:
     y_pred = model.predict(X_test)
     cm = confusion_matrix(y_test, y_pred)
-    labels = [["TN", "FP"], ["FN", "TP"]]
-    annot = np.array([[f"{v}\n({lbl})" for v, lbl in zip(row, lbl_row)]
-                      for row, lbl_row in zip(cm, labels)])
+    total = cm.sum()
+    annot = np.array([[f"{v}\n{v/total:.2%}" for v in row] for row in cm])
 
     fig, ax = plt.subplots(figsize=(6, 5))
     sns.heatmap(cm, annot=annot, fmt="", cmap="Blues", linewidths=0.5,

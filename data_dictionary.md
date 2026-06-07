@@ -7,9 +7,9 @@
 |--------|------|-------------|-------|
 | `ID` | int | Unique customer identifier | Dropped — not a predictive feature |
 | `Age` | int | Customer age in years | Range 23–67 |
-| `Experience` | int | Years of professional experience | 52 rows have negative values (data entry error); clipped to 0 |
+| `Experience` | int | Years of professional experience | Dropped — r≈0.99 correlation with Age makes it redundant |
 | `Income` | int | Annual income in thousands USD | Strongest predictor of loan acceptance |
-| `ZIPCode` | int | Home address ZIP code | Dropped — too granular, not predictive at this scale |
+| `ZIPCode` | int | Home address ZIP code | Truncated to 2-digit prefix, then one-hot encoded (drop_first=True) |
 | `Family` | int | Family size (number of members) | 1–4; second-strongest predictor |
 | `CCAvg` | float | Average monthly credit card spend in thousands USD | Proxy for discretionary income |
 | `Education` | int | Education level: 1=Undergrad, 2=Graduate, 3=Advanced/Professional | Ordinal; higher education → higher acceptance rate |

@@ -7,8 +7,8 @@ def load_data(path: str) -> pd.DataFrame:
 
 
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.drop(columns=["ID"])
-    df["Experience"] = df["Experience"].clip(lower=0)
+    # Experience dropped: r=0.99 with Age — redundant feature
+    df = df.drop(columns=["ID", "Experience"])
     # Truncate ZIPCode to 2-digit prefix then one-hot encode
     df["ZIPCode"] = df["ZIPCode"].astype(str).str[:2]
     # Education: integer → string labels then one-hot encode
