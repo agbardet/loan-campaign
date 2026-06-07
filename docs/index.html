@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AllLife Bank — Personal Loan Campaign | Gary Bardet</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #2E86AB;
+      --dark:    #1D3557;
+      --light:   #A8DADC;
+      --bg:      #f8fafc;
+      --card-bg: #ffffff;
+      --text:    #1a202c;
+      --muted:   #64748b;
+      --border:  #e2e8f0;
+      --radius:  10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%);
+      color: #fff;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    header p.subtitle {
+      font-size: 1.05rem;
+      opacity: 0.88;
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .tag-row span {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 4px 12px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    /* ── METRICS PANEL ── */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .metric-card .value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric-card .label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SECTIONS ── */
+    section { margin-bottom: 44px; }
+
+    section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    section p {
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    /* ── FEATURE TABLE ── */
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .feature-table th {
+      background: var(--dark);
+      color: #fff;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+
+    .feature-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feature-table tr:nth-child(even) td { background: #f1f5f9; }
+
+    .bar {
+      display: inline-block;
+      height: 10px;
+      background: var(--blue);
+      border-radius: 5px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    /* ── MODEL TABLE ── */
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .model-table th {
+      background: var(--dark);
+      color: #fff;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+
+    .model-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .model-table tr.winner td {
+      background: #eff8ff;
+      font-weight: 600;
+    }
+
+    .model-table tr.winner td:first-child::before {
+      content: "★ ";
+      color: var(--blue);
+    }
+
+    /* ── CTA BUTTONS ── */
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-outline { background: #fff; color: var(--dark); border: 2px solid var(--dark); }
+    .btn-ghost   { background: #fff; color: var(--muted); border: 2px solid var(--border); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 28px 16px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Machine Learning · Binary Classification</div>
+  <h1>AllLife Bank<br>Personal Loan Campaign</h1>
+  <p class="subtitle">Predicting which liability customers will accept a personal loan offer — 90.3% recall, 91.5% F1 on a class-imbalanced dataset.</p>
+  <div class="tag-row">
+    <span>Python</span>
+    <span>scikit-learn</span>
+    <span>NumPy</span>
+    <span>Pandas</span>
+    <span>Seaborn</span>
+    <span>Matplotlib</span>
+    <span>Decision Tree</span>
+    <span>Classification</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- METRICS -->
+  <section>
+    <div class="metrics">
+      <div class="metric-card">
+        <div class="value">0.915</div>
+        <div class="label">Test F1 Score</div>
+      </div>
+      <div class="metric-card">
+        <div class="value">0.903</div>
+        <div class="label">Test Recall</div>
+      </div>
+      <div class="metric-card">
+        <div class="value">0.929</div>
+        <div class="label">Test Precision</div>
+      </div>
+      <div class="metric-card">
+        <div class="value">3.1pp</div>
+        <div class="label">Overfitting Gap</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>Business Problem</h2>
+    <p>AllLife Bank wants to grow its personal loan portfolio by converting existing liability (deposit) customers. Only 9.6% of 5,000 customers accepted a previous loan offer — making untargeted outreach expensive and low-conversion.</p>
+    <p>A propensity model identifies the right customers to contact, reducing cost per acquisition and enabling marketing teams to focus on the highest-likelihood acceptors. The model captures 9 in 10 actual loan acceptors while maintaining 92.9% precision.</p>
+  </section>
+
+  <!-- MODEL COMPARISON -->
+  <section>
+    <h2>Model Development</h2>
+    <p>Three Decision Tree variants were built and compared to demonstrate the progression from overfitting to generalisation:</p>
+    <table class="model-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Test F1</th>
+          <th>Test Recall</th>
+          <th>Test Precision</th>
+          <th>Train–Test Gap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Default DT (no pruning)</td>
+          <td>0.870</td>
+          <td>0.833</td>
+          <td>0.909</td>
+          <td>13.0 pp</td>
+        </tr>
+        <tr>
+          <td>Pre-pruned (GridSearchCV, recall)</td>
+          <td>0.857</td>
+          <td>0.792</td>
+          <td>0.934</td>
+          <td>4.4 pp</td>
+        </tr>
+        <tr class="winner">
+          <td>Post-pruned (cost complexity)</td>
+          <td>0.915</td>
+          <td>0.903</td>
+          <td>0.929</td>
+          <td>3.1 pp</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FEATURE IMPORTANCE -->
+  <section>
+    <h2>Key Predictors</h2>
+    <table class="feature-table">
+      <thead>
+        <tr><th>Rank</th><th>Feature</th><th>Importance</th><th>Business Signal</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Income</td>
+          <td><span class="bar" style="width:92px"></span>61.7%</td>
+          <td>High-income customers have greater debt serviceability</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Family Size</td>
+          <td><span class="bar" style="width:21px"></span>13.8%</td>
+          <td>Larger families have higher financial needs</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Education</td>
+          <td><span class="bar" style="width:12px"></span>8.0%</td>
+          <td>Graduate / professional degrees → higher acceptance rate</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>CCAvg (spend)</td>
+          <td><span class="bar" style="width:11px"></span>7.2%</td>
+          <td>Higher card spend signals financial confidence</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- CTA BUTTONS -->
+  <div class="cta-group">
+    <a class="btn btn-primary" href="loan_campaign.html">📓 View Full Notebook</a>
+    <a class="btn btn-outline" href="https://github.com/agbardet/loan-campaign" target="_blank">GitHub Source</a>
+    <a class="btn btn-ghost" href="../data/Loan_Modelling.csv" download>📥 Dataset (CSV)</a>
+    <a class="btn btn-ghost" href="../model_card.md">Model Card</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>Gary Bardet · ML &amp; Gen AI Engineer &nbsp;·&nbsp;
+    <a href="https://agbardet.github.io">Portfolio</a> &nbsp;·&nbsp;
+    <a href="https://github.com/agbardet">GitHub</a>
+  </p>
+</footer>
+
+</body>
+</html>
